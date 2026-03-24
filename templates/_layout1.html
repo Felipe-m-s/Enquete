@@ -45,9 +45,10 @@
 
 {% block main %}
     <div class="container">
-    {% block content %} 
-        <p>Conteúdo padrão...</p>
-    {% endblock content %}
+        {% include '_messages.html' %}
+        {% block content %} 
+            <p>Conteúdo padrão...</p>
+        {% endblock content %}
     </div>
 {% endblock %}
 
