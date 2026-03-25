@@ -7,4 +7,20 @@ class AccountSingupForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'email', 'city', 'password']
+        widgets = {
+            'city': forms.Select(choices=[
+                (1, 'Conceição do Mato dentro'),
+                (2, 'Gouveia'),
+                (3, 'Diamantina'),
+                (4, 'Datas'),
+                (5, 'Sabinópolis'),
+                (6, 'Guanhães'),
+                (7, 'Alvorada de Minas'),
+                (8, 'Cantagalo'),
+                (9, 'Peçanha'),
+                (10, 'Presidente Kubitschek'),
+                (11, 'Santo Antônio do Itambé'),
+                (12, 'Serra Azul')
+            ])
+        }
