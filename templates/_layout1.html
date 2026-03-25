@@ -18,6 +18,9 @@
         <span class="fs-4">Django do Zero</span>
         </a>
         <ul class="nav nav-pills">
+            <li class="nav-pills">
+                <a href="{% url 'polls_list' %}" class="nav-link px-2 link-dark">Enquetes</a>
+            </li>
             {% if user.is_authenticated %}
                 <li class="nav-pills">
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
@@ -25,7 +28,7 @@
                         <button type="submit" class="nav-link px-2 link-dark">
                             Sair
                         </button>
-</form>
+                    </form>
                 </li>
                 {% else %}
                     <li class="nav-pills">

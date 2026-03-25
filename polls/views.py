@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 from django.http import HttpResponse
 from django.contrib import messages
-
 from polls.models import Question
+from django.views.generic import DetailView, ListView
+
+
+# Create your views here.
 
 def index(request):
     # return HttpResponse("Olá")
@@ -22,3 +23,12 @@ def ola(request):
     }
     return render(request, 'polls/questions.html', context)
 
+class QuestionDetailView(DetailView):
+    model = Question
+    template_name = 'polls/question_detail.html'
+    context_object_name = 'question'
+
+class QuestionListView(ListView):
+    model = Question
+    template_name = 'polls/question_list.html'
+    context_object_name = 'questions'

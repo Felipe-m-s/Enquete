@@ -1,0 +1,23 @@
+{% extends '_layout1.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Listagem de Perguntas</h5>
+        </div>
+        <div class="card-body">
+            <ul>
+                {% for question in questions %}
+                    <li>
+                        <a href="{% url 'question_detail' pk=question.id %}" class="link-secondary">
+                            {{ question.question_text }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <span>Sem perguntas</span>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}
