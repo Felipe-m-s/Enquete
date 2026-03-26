@@ -10,6 +10,15 @@
                 {{ question.question_text }}
 
             </p>
+            {% for choice in question.choice_set.all %}
+                <p>
+                    {{ choice.id }} - {{ choice.choice_text }}
+                </p>
+                {% empty %}
+                <h5>
+                    Não há alternativas.
+                </h5>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
