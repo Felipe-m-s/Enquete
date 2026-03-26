@@ -21,6 +21,7 @@ class AccountSingupForm(forms.ModelForm):
                 (9, 'Peçanha'),
                 (10, 'Presidente Kubitschek'),
                 (11, 'Santo Antônio do Itambé'),
-                (12, 'Serra Azul')
+                (12, 'Serra Azul'),
+                (13, 'Serro')
             ])
         }
