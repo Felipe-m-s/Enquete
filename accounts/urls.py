@@ -8,4 +8,9 @@ urlpatterns = [
         views.AccountCreateView.as_view(),
         name='signup'
     ),
+    path(
+        'account/profile',
+        views.AccountTemplateView.as_view(),
+        name='account_detail'
+    )
 ]

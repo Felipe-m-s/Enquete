@@ -1,4 +1,9 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 # Create your models here.
 class Question(models.Model):
@@ -37,3 +42,19 @@ class Choice(models.Model):
     
     def __str__(self):
         return self.choice_text
+    
+    def save(self, user = None, *args, **kwargs):
+        if self.id is not None and user is not None:
+            question_user = QuestionUser.objects.filter(question=self.question, user=user).count()
+            
+            if question_user > 0:
+                raise ValidationError("Não é permitido votar mais de uma vez.")
+            
+            question_user = QuestionUser(question=self.question, user=user)
+            question_user.save()
+        super(Choice, self).save(*args, **kwargs)
+
+class QuestionUser(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    

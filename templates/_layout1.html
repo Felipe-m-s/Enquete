@@ -22,6 +22,11 @@
                 <a href="{% url 'polls_list' %}" class="nav-link px-2 link-dark">Enquetes</a>
             </li>
             {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'account_detail' %}" class="nav-link px-2 link-dark">
+                        Minha conta
+                    </a>
+                </li>
                 <li class="nav-pills">
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
                         {% csrf_token %}

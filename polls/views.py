@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from polls.models import Question, Choice
 from django.views.generic import DetailView, ListView
+from django.core.exceptions import ValidationError
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 # Create your views here.
@@ -40,16 +44,20 @@ class QuestionListView(ListView):
     template_name = 'polls/question_list.html'
     context_object_name = 'questions'
 
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     if request.method == 'POST':
         try:
             selected_choice = question.choice_set.get(pk=request.POST['choice'])
+            session_user = get_object_or_404(User, id=request.user.id)
+            selected_choice.votes += 1
+            selected_choice.save(user=session_user)
         except (KeyError, Choice.DoesNotExist):
             messages.error(request, "Selecione uma alternativa válida.")
+        except (ValidationError) as e:
+            messages.error(request, e.message)
         else:
-            selected_choice.votes += 1
-            selected_choice.save()
             messages.success(request, "Voto registrado com sucesso!")
             return redirect(reverse_lazy('question_detail', args=(question.id,)))
         
