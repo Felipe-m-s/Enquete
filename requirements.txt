@@ -1,7 +1,9 @@
 asgiref==3.11.1
 Django==6.0.3
+django-extensions==3.3.0
 gunicorn==25.3.0
 packaging==26.0
 python-dotenv==1.2.2
 sqlparse==0.5.5
+typing-extensions==4.9.0
 tzdata==2025.3

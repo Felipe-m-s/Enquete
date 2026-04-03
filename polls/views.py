@@ -35,8 +35,6 @@ class QuestionDetailView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
-        question = kwargs.get('object')
-        context['total_votes'] = question.get_total_votes()
         return context
 
 class QuestionListView(ListView):

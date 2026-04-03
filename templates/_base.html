@@ -9,11 +9,49 @@
         {% endblock %}
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    
     {% block css %}
     {% endblock %}
 
 </head>
+<style>
+    body {
+        /* Gradiente suave: do seu #0E2B33 para um tom um pouco mais azulado */
+        background: linear-gradient(135deg, #0E2B33 0%, #1a4a57 100%);
+        
+        /* Fixa o fundo para ele não "quebrar" ao rolar a página */
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        /* Altura mínima da tela cheia */
+        min-height: 100vh;
+        
+        /* Cor do texto global (branco para contrastar com o fundo escuro) */
+        color: #ffffff;
+        margin: 0;
+    }
+
+    /* Ajuste para que os containers do Bootstrap fiquem legíveis */
+    .container {
+        padding-top: 2rem;
+    }
+
+    a {
+        color: #4dd0e1;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #ffffff;
+    }
+    .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    }
+
+</style>
 <body>
     {% block header %}
     {% endblock %}

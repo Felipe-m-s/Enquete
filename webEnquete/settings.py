@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DJANGO_DEBUG', default=0))
+DEBUG = int(os.environ.get('DJANGO_DEBUG', default=1))
 
 ALLOWED_HOSTS = str(os.environ.get('DJANGO_ALLOWED_HOSTS')).split(',')
 
@@ -129,7 +129,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 LOGIN_REDIRECT_URL = '/ola'
-LOGOUT_REDIRECT_URL = '/index'
+LOGOUT_REDIRECT_URL = 'index'
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'secondary',
@@ -139,4 +139,8 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-AUTH_USER_MODEL = 'accounts.User'
+# AUTH_USER_MODEL = 'accounts.User'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/')
