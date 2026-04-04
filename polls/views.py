@@ -14,11 +14,7 @@ User = get_user_model()
 # Create your views here.
 
 def index(request):
-    # return HttpResponse("Olá")
-    # return render(request, 'index.html')
-    aviso = 'Aviso importante: Esta pagina não precisa de login para ser acessada.'
-    messages.warning(request, aviso)
-    return render (request, 'index.html', {'title': 'Bem-vindo à Enquete!'})
+    return render (request, 'index.html', {'title': 'Bem-vindo à enquete da Semana Jurídica!'})
 
 @login_required
 def ola(request):

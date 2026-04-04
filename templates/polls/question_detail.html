@@ -2,17 +2,8 @@
 
 {% block content %}
     <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">Pergunta</h5>
-        </div>
+        <h5 class="card-title-question">Pergunta {{ question.id|stringformat:"02d" }}</h5>
         <div class="card-body">
-            <p>
-                {{ question.question_text }}
-
-            </p>
-            {% if total_votes %}
-                <h6 class="fw-bold">Total de votos: {{ total_votes }}</h6>
-            {% endif %}
             <form action="{% url 'poll_vote' question_id=question.id %}" method="post">
                 {% csrf_token %}
                 <fieldset>
@@ -21,7 +12,7 @@
                         {% for choice in question.choice_set.all %} 
                             <input type="radio" name="choice" id="choice{{ forloop.counter }}"
                             class="form-check-input" value="{{ choice.id }}">
-                            <label for="choice{{ forloop.counter }}" class="form-check-label">
+                            <label for="choice{{ forloop.counter }}" class="form-check-label" id="choice">
                                 {{ choice.choice_text }}
                             </label><br>
                             {% empty %}
@@ -30,7 +21,9 @@
                     </legend>
                 </fieldset>
                 {% if question.choice_set.all %}
-                    <input type="submit" class="btn btn-primary btn-lg" value="Votar">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Confirmar" id="btn-salvarEscolha">
+                    </div>
                 {% endif %}
                 </form>
         </div>

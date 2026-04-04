@@ -1,10 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
 
-{% block head_title %}
-    Voto Inteligente
-{% endblock %}
-
 {% block css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     {# CSS do projeto #}
@@ -12,10 +8,26 @@
 {% endblock %}
 
 {% block header %}
+    <style>
+        .brand-match {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .brand-match span {
+            background: linear-gradient(to right, #00d2ff, #3a7bd5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+    </style>
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="{% url 'index' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <span class="fs-4">Match Eleitoral</span>
+        <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
         </a>
         <ul class="nav nav-pills">
             <li class="nav-pills">

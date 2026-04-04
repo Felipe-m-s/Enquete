@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block head_title %}
+        Voto Inteligente
         {% endblock %}
     </title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
@@ -15,23 +16,21 @@
 </head>
 <style>
     body {
-        /* Gradiente suave: do seu #0E2B33 para um tom um pouco mais azulado */
+        
         background: linear-gradient(135deg, #0E2B33 0%, #1a4a57 100%);
         
-        /* Fixa o fundo para ele não "quebrar" ao rolar a página */
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
         
-        /* Altura mínima da tela cheia */
+        
         min-height: 100vh;
         
-        /* Cor do texto global (branco para contrastar com o fundo escuro) */
         color: #ffffff;
         margin: 0;
     }
 
-    /* Ajuste para que os containers do Bootstrap fiquem legíveis */
+    
     .container {
         padding-top: 2rem;
     }
@@ -49,6 +48,87 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
+    align-items: center;
+    }
+
+    .card-title-question {
+        display: inline-block;
+        background-color: rgba(0, 210, 255, 0.2);
+        color: #00d2ff;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.3;
+        margin-bottom: 2rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    #btn-salvarEscolha {
+        background: linear-gradient(45deg, #007bff, #00d2ff);
+        border: none;
+        border-radius: 50px;
+        padding: 12px 35px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+        align-items: right;
+    }
+
+    #btn-salvarEscolha:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+        color: #00d2ff !important;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    #choice {
+        display: block;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 15px 20px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #ced4da;
+    }
+
+    #choice:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Estilo quando a opção está marcada */
+    input[type="radio"]:checked + #choice {
+        background: rgba(0, 210, 255, 0.1);
+        border-color: #00d2ff;
+        color: #ffffff;
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
     }
 
 </style>

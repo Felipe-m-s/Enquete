@@ -1,17 +1,107 @@
-{% extends '_layout1.html' %}
+{% extends '_layout3.html' %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">Registro de Usuário</h5>
-        </div>
-        <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p}}
-                <button type="submit" class="btn btn-success">Enviar</button>
-            </form>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .signup-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .card-title {
+        color: #00d2ff;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        color: #ced4da;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    .form-control, .form-select {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border-radius: 50px !important;
+        padding: 12px 20px !important;
+    }
+
+    option {
+            background-color: #0e2b33d7;
+            color: white;
+        }
+
+    .btn-enviar {
+        background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+        border: none;
+        border-radius: 50px;
+        padding: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        width: 100%;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+
+    .btn-enviar:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+    }
+    
+</style>
+
+<div class="wrapper">
+    <div class="signup-card">
+        <div class="text-center mb-4">
+            <h2 class="card-title" align="center">Registre-se</h2>
+            <p class="text-white-50">Antes de começar, por favor, registre-se para participar da enquete.</p>
         </div>
 
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <small class="text-danger mt-1">{{ field.errors|striptags }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-enviar">
+                Começar
+            </button>
+        </form>
     </div>
+</div>
 {% endblock %}
