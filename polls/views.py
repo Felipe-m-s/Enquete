@@ -16,7 +16,7 @@ User = get_user_model()
 # Create your views here.
 
 def index(request):
-    return render (request, 'index.html', {'title': 'Bem-vindo à enquete da Semana Jurídica!'})
+    return render (request, 'core/index.html', {'title': 'Bem-vindo à enquete da Semana Jurídica!'})
 
 @login_required
 def home(request):
@@ -37,10 +37,10 @@ def home(request):
         'city': city,
         'ansered_questions': ansered_questions
     }
-    return render(request, 'home.html', context)
+    return render(request, 'core/home.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'core/about.html')
 
 class QuestionListView(ListView):
     model = Question

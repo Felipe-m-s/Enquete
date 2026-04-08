@@ -16,7 +16,7 @@ from polls.models import QuestionUser
 # Create your views here.
 
 class AccountCreateView(FormView):
-    template_name = 'registration/signup_form.html'
+    template_name = 'account/signup_form.html'
     form_class = AccountSingupForm
     success_url = reverse_lazy('home')
     
