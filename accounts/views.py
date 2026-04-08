@@ -18,7 +18,7 @@ from polls.models import QuestionUser
 class AccountCreateView(FormView):
     template_name = 'registration/signup_form.html'
     form_class = AccountSingupForm
-    success_url = reverse_lazy('ola')
+    success_url = reverse_lazy('home')
     
     def form_valid(self, form) -> HttpResponse:
         username = form.cleaned_data['username']

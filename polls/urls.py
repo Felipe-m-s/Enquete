@@ -1,13 +1,16 @@
 from django.urls import path
 
-from polls.views import index, ola
 from polls import views
 
 urlpatterns = [
-    path('', index,name='index'),
-    path('ola/', ola, name='ola'),
-    path('enquete/<int:pk>/show/', views.QuestionDetailView.as_view(), name='question_detail'),
+    # Path para a página inicial
+    path('', views.index, name='index'),
+    # Path para a página de início
+    path('home/', views.home, name='home'),
+    # Path para a página de detalhes da questão
+    path('enquete/<int:question_id>/', views.vote, name='question_detail'),
+    # Path para a página de lista de questões
     path('enquete/list/', views.QuestionListView.as_view(), name='polls_list'),
-    path('enquete/<int:question_id>/vote/', views.vote, name='poll_vote'),
-    path('enquete/<int:question_id>/results/', views.results, name='poll_results'),
+    # Path para a página de resultados da enquete
+    path('enquete/results/', views.results_match, name='poll_results_match'),
 ]

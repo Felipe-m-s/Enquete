@@ -9,33 +9,18 @@
 {% endblock %}
 
 {% block header %}
+    
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
-        </a>
-        <ul class="nav nav-pills">
-            <li class="nav-pills">
-                <a href="{% url 'poll_results_match' %}" class="nav-link px-2 link-dark">Meu Match</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'account_detail' %}" class="nav-link px-2 link-dark">
-                    Minha conta
-                </a>
-            </li>
-            <li class="nav-pills">
-                <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-link px-2 link-dark">
-                        Sair
-                    </button>
-                </form>
-            </li>
-            <li class="nav-pills">
-                
-            </li>
-        </ul>
-    </header>
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-pills">
+                    <a href="{% url 'home' %}" class="nav-link px-2 link-dark">Fechar Perguntas</a>
+                </li>
+            </ul>
+        </header>
     </div>
 {% endblock %}
 

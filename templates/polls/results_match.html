@@ -1,0 +1,109 @@
+{% extends '_layout2.html' %}
+
+{% block content %}
+    <div class="container mt-2">
+        <div class="text-center mb-4">
+            <span class="fs-4 brand-match">Match <span>Eleitoral</span></span>
+            <h1 class="display-4 fw-bold text-primary mt-0 mb-1">Seu Match Eleitoral</h1>
+            <p class="fs-5 text-white fw-light" style="letter-spacing: 1px; opacity: 0.9;">
+                Afinidade calculada com base nas suas respostas.
+            </p>
+            <hr class="mx-auto bg-primary border-primary opacity-25" style="width: 100px; height: 3px;">
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% if matches %}
+                    {% for item in matches %}
+                        <div class="card mb-4 shadow-sm border-0" style="background-color: #2c3e50; color: white; border-radius: 20px;">
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+
+                                    <div class="flex-shrink-0 mb-3 mb-md-0">
+                                        {% if item.deputado.imagem %}
+                                            <img src="{{ item.deputado.imagem.url }}" alt="{{ item.deputado.name }}" 
+                                                class="rounded-circle border border-3 border-primary" 
+                                                style="width: 120px; height: 120px; object-fit: cover;">
+                                        {% endif %}
+                                    </div>
+                                
+                                    <div class="flex-grow-1 ms-md-4 w-100">
+                                        <div class="mb-2">
+                                            <h2 class="h3 fw-bold mb-0">{{ item.deputado.name }}</h2>
+                                            <span class="badge bg-info text-dark">NOVO</span>
+                                        </div>
+
+                                        <p class="mb-3 text-light" style="font-size: 0.95rem; line-height: 1.4;">
+                                            <span class="text-primary fw-bold" style="font-size: 1.4rem;">{{ item.percentage|floatformat:0 }}%</span> 
+                                            das perguntas deram match com o que esse(a) deputado(a) luta.
+                                        </p>
+                                    
+                                        <a href="https://www.almg.gov.br/busca/?q={{ item.deputado.name|urlencode }}" 
+                                            target="_blank" 
+                                            class="btn btn-outline-info w-100 w-md-auto py-2">
+                                            <i class="bi bi-person-badge"></i> Ver no Portal ALMG
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-info text-center">Nenhum match encontrado. Tente responder mais perguntas!</div>
+                {% endif %}
+                    
+                <div class="mt-4 text-center">
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3 align-items-center">
+                    
+                        <a href="{% url 'home' %}" 
+                            class="btn btn-md px-4 py-2 rounded-pill fw-bold btn-inicio"
+                            style="background: linear-gradient(45deg, #6a11cb, #2575fc); 
+                                    border: 1px solid rgba(255, 255, 255, 0.2); 
+                                    color: white; 
+                                    backdrop-filter: blur(5px);
+                                    font-size: 0.85rem;
+                                    transition: 0.3s;">
+                            <i class="bi bi-house-door me-2"></i> 
+                            INÍCIO
+                        </a>
+                    
+                        <a href="{% url 'question_detail' question_id=1 %}" 
+                            class="btn btn-md px-4 py-2 rounded-pill fw-bold shadow-sm btn-refazer"
+                            style="background: #ffc107; 
+                                    color: #000; 
+                                    border: none;
+                                    font-size: 0.9rem;
+                                    position: relative;
+                                    overflow: hidden;">
+                            <i class="bi bi-arrow-counterclockwise me-2"></i> 
+                            REFAZER MAPEAMENTO
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <style>
+        /* Efeito de brilho pulsante no botão de Refazer */
+        .btn-refazer {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+        }
+
+        .btn-refazer:hover {
+            transform: translateY(-2px);
+            background-color: #ffca2c !important;
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.5) !important;
+        }
+
+        /* Ajuste para o botão de Início não sumir no hover */
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        /* Efeito de brilho simples ao passar o mouse */
+        .btn-inicio:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 4px 12px rgba(37, 117, 252, 0.5) !important;
+        }
+    </style>
+{% endblock %}

@@ -1,10 +1,63 @@
-{% extends '_layout1.html' %}
+{% extends '_layout4.html' %}
 
 {% block content %}
+    <style>
+       /* Labels de texto */
+        .progress-percentage {
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+        .progress-percentage {
+            color: #00d4ff; /* Um azul neon para destacar */
+        }
+
+        /* O fundo da barra */
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background: #1a1a1a;
+            border-radius: 50px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        /* A barra que enche (com degradê) */
+        .progress-bar-custom {
+            height: 100%;
+            background: linear-gradient(90deg, #0072ff 0%, #00d4ff 100%);
+            border-radius: 50px;
+            position: relative;
+            transition: width 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        /* Efeito de brilho passando pela barra */
+        .progress-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: scan 2s infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
     <div class="card">
         <h5 class="card-title-question">Pergunta {{ question.id|stringformat:"02d" }}</h5>
         <div class="card-body">
-            <form action="{% url 'poll_vote' question_id=question.id %}" method="post">
+            <form action="{% url 'question_detail' question_id=question.id %}" method="post">
                 {% csrf_token %}
                 <fieldset>
                     <legend>
@@ -22,10 +75,22 @@
                 </fieldset>
                 {% if question.choice_set.all %}
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <input type="submit" class="btn btn-primary btn-lg" value="Confirmar" id="btn-salvarEscolha">
+                        <button type="submit" class="btn {% if is_last_question %}btn-success{% else %}btn-primary{% endif %} btn-lg" id="btn-salvarEscolha">
+                            {% if is_last_question %}
+                                <i class="bi bi-check-all"></i>Finalizar
+                            {% else %}
+                                <i class="bi bi-arrow-right"></i>Próxima
+                            {% endif %}
+                        </button>
                     </div>
                 {% endif %}
-                </form>
+            </form>
+            <span class="progress-percentage">{{ progress|floatformat:0 }}%</span>
+            <div class="progress-container">
+                <div class="progress-bar-custom" style="width: {{ progress|floatformat:0 }}%;">
+                    <div class="progress-glow"></div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

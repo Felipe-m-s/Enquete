@@ -1,0 +1,130 @@
+{% extends '_layout1.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            
+            <h1 class="display-5 fw-bold text-white mb-3">Olá, {{ user_name|title }}!</h1>
+            <p class="lead text-white-50 mb-5">
+                Você está representando a cidade de <span class="text-primary fw-bold">{{ city }}</span>. 
+                Pronto para descobrir qual deputado estadual mais se alinha aos seus valores?
+            </p>
+
+            <div class="row g-4 mb-5 text-start">
+                <div class="col-md-4">
+                    <div class="custom-card">
+                        <div class="icon-box blue">
+                            <i class="bi bi-fingerprint"></i>
+                        </div>
+                        <h5>Seu DNA Político</h5>
+                        <p>Questões estratégicas sobre seus valores e sua visão para {{ city }}. Descubra quem você é nas urnas!</p>
+                        <div class="card-footer-tip">15 Questões</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="custom-card">
+                        <div class="icon-box cyan">
+                            <i class="bi bi-geo-fill"></i>
+                        </div>
+                        <h5>Representatividade</h5>
+                        <p>Represente <strong>{{ city }}</strong> e ajude a definir o perfil político da nossa região.</p>
+                        <div class="card-footer-tip text-cyan">Ranking Regional</div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="custom-card">
+                        <div class="icon-box purple">
+                            <i class="bi bi-stars"></i>
+                        </div>
+                        <h5>Análise de Alinhamento</h5>
+                        <p>Ao final, você receberá um ranking de compatibilidade com os deputados que mais se aproximam da sua visão de mundo.</p>
+                        <div class="card-footer-tip text-purple">Resultado em Tempo Real</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 col-md-6 mx-auto">
+                <div class="text-center">
+                    {% if ansered_questions %}
+                        <a href="{% url 'question_detail' question_id=1 %}" class="btn btn-outline-warning btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+                            REINICIAR MAPEAMENTO <i class="bi bi-arrow-counterclockwise"></i>
+                        </a>
+                        <p class="text-white-50 mt-3 small">Você já possui progresso salvo. Deseja começar de novo?</p>
+                    {% else %}
+                        <a href="{% url 'question_detail' question_id=1 %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+                            INICIAR MAPEAMENTO <i class="bi bi-chevron-right"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilização Avançada dos Cards */
+    .custom-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px); /* Efeito de vidro */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 25px;
+        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .custom-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(0, 212, 255, 0.5);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Estilo dos Ícones */
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .blue { background: rgba(0, 114, 255, 0.2); color: #0072ff; }
+    .cyan { background: rgba(0, 212, 255, 0.2); color: #00d4ff; }
+    .purple { background: rgba(163, 71, 255, 0.2); color: #a347ff; }
+
+    /* Textos dentro do Card */
+    .custom-card h5 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .custom-card p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .card-footer-tip {
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        color: #0072ff;
+    }
+    
+    .text-cyan { color: #00d4ff !important; }
+    .text-purple { color: #a347ff !important; }
+</style>
+{% endblock %}
