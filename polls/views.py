@@ -39,14 +39,8 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
-# class QuestionDetailView(DetailView):
-#     model = Question
-#     template_name = 'polls/question_detail.html'
-#     context_object_name = 'question'
-    
-#     def get_context_data(self, **kwargs):
-#         context = super(QuestionDetailView, self).get_context_data(**kwargs)
-#         return context
+def about(request):
+    return render(request, 'about.html')
 
 class QuestionListView(ListView):
     model = Question

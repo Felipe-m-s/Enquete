@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     # Path para a página de início
     path('home/', views.home, name='home'),
+    # Path para a página de sobre
+    path('about/', views.about, name='about'),
     # Path para a página de detalhes da questão
     path('enquete/<int:question_id>/', views.vote, name='question_detail'),
     # Path para a página de lista de questões

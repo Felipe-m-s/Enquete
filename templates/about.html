@@ -1,0 +1,81 @@
+{% extends '_layout1.html' %}
+
+{% block content %}
+    <div class="container py-5">
+
+        <header class="text-center mb-5 pb-4">
+            <h1 class="display-4 fw-bold text-white mb-3">Sobre o Projeto</h1>
+            <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
+                Uma iniciativa da <strong>Semana Jurídica</strong> para promover a transparência política e o voto consciente através da análise de dados reais.
+            </p>
+            <div class="mt-4">
+                <span class="badge rounded-pill bg-primary px-3 py-2">Tecnologia</span>
+                <span class="badge rounded-pill bg-purple px-3 py-2" style="background-color: #6a11cb;">Direito</span>
+                <span class="badge rounded-pill bg-info px-3 py-2 text-dark">Cidadania</span>
+            </div>
+        </header>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 bg-dark text-white shadow-sm" style="border-radius: 20px; background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(10px);">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-database-check fs-1 text-primary mb-3"></i>
+                        <h5 class="fw-bold">Dados Reais</h5>
+                        <p class="text-white-50 small">Não utilizamos suposições. O match é baseado nos votos nominais e posicionamentos públicos registrados nos portais da transparência.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 bg-dark text-white shadow-sm" style="border-radius: 20px; background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(10px);">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-shield-lock fs-1 text-warning mb-3"></i>
+                        <h5 class="fw-bold">Imparcialidade</h5>
+                        <p class="text-white-50 small">O algoritmo é estritamente matemático. A afinidade é calculada pela convergência de ideias, sem interferência humana nos resultados.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 bg-dark text-white shadow-sm" style="border-radius: 20px; background: rgba(255,255,255,0.05) !important; backdrop-filter: blur(10px);">
+                    <div class="card-body p-4 text-center">
+                        <i class="bi bi-mortarboard fs-1 text-info mb-3"></i>
+                        <h5 class="fw-bold">Foco Acadêmico</h5>
+                        <p class="text-white-50 small">Desenvolvido como ferramenta de estudo na Semana Jurídica para analisar como o Direito molda a representação política regional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center py-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="text-white fw-bold mb-4">Como funciona o cálculo?</h2>
+                <p class="text-white-50">
+                    Nosso sistema utiliza uma matriz de <strong>15 eixos temáticos</strong> que abrangem questões econômicas, sociais e regionais de {{ city }}.
+                </p>
+                <p class="text-white-50">
+                    Cada resposta sua é comparada com a base de dados histórica do Legislativo. O resultado final apresenta uma porcentagem de alinhamento, destacando quais representantes possuem uma visão de mundo mais próxima à sua.
+                </p>
+                <div class="alert alert-primary bg-primary text-white border-0 shadow-sm mt-4" style="border-radius: 15px;">
+                    <i class="bi bi-info-circle-fill me-2"></i> <strong>Nota:</strong> Este teste é uma ferramenta pedagógica e não substitui a pesquisa individual de cada eleitor.
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="p-4 rounded-4" style="background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2)); border: 1px solid rgba(255,255,255,0.1);">
+                    <h5 class="text-white mb-3 fw-bold"><i class="bi bi-journal-text me-2"></i>Fontes dos Dados</h5>
+                    <ul class="text-white-50 list-unstyled mb-0">
+                        <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Portais de Transparência Legislativa</li>
+                        <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Diários Oficiais</li>
+                        <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Histórico de Votações Nominais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-5">
+            <h3 class="text-white mb-4">Pronto para descobrir seu alinhamento?</h3>
+            <a href="{% url 'home' %}" class="btn btn-lg px-5 py-3 rounded-pill fw-bold" style="background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; border: none; box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);">
+                VOLTAR AO INÍCIO E COMEÇAR
+            </a>
+        </div>
+
+    </div>
+{% endblock %}
