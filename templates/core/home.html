@@ -50,12 +50,12 @@
                 <div class="text-center">
                     {% if ansered_questions %}
                         <a href="{% url 'question_detail' question_id=1 %}" class="btn btn-outline-warning btn-lg px-5 py-3 rounded-pill fw-bold shadow">
-                            REINICIAR MAPEAMENTO <i class="bi bi-arrow-counterclockwise"></i>
+                            EXPLORAR NOVAMENTE <i class="bi bi-arrow-counterclockwise"></i>
                         </a>
                         <p class="text-white-50 mt-3 small">Você já possui progresso salvo. Deseja começar de novo?</p>
                     {% else %}
                         <a href="{% url 'question_detail' question_id=1 %}" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow">
-                            INICIAR MAPEAMENTO <i class="bi bi-chevron-right"></i>
+                            DESCOBRIR AGORA <i class="bi bi-chevron-right"></i>
                         </a>
                     {% endif %}
                 </div>
