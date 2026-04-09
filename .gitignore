@@ -4,3 +4,4 @@
 **/.env
 /fotos_originais
 public/
+db.sqlite3
