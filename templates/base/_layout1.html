@@ -4,40 +4,41 @@
 {% block css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     {# CSS do projeto #}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock %}
+{% endblock %}  
 
 {% block header %}
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
-        </a>
-        <ul class="nav nav-pills">
-            <li class="nav-pills">
-                <a href="{% url 'poll_results_match' %}" class="nav-link px-2 link-dark">Meu Match</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'account_detail' %}" class="nav-link px-2 link-dark">
-                    Minha conta
-                </a>
-            </li>
-            <li class="nav-pills">
-                <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-link px-2 link-dark">
-                        Sair
-                    </button>
-                </form>
-            </li>
-            <li class="nav-pills">
-                <a href="{% url 'about' %}" class="nav-link px-2 link-dark">
-                    Sobre
-                </a>
-            </li>
-        </ul>
-    </header>
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-pills">
+                    <a href="{% url 'poll_results_match' %}" class="nav-link px-2 link-dark">Meu Match</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'account_detail' %}" class="nav-link px-2 link-dark">
+                        Perfil
+                    </a>
+                </li>
+                <li class="nav-pills">
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link px-2 link-dark">
+                            Sair
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-pills">
+                    <a href="{% url 'about' %}" class="nav-link px-2 link-dark">
+                        Sobre
+                    </a>
+                </li>
+            </ul>
+        </header>
     </div>
 {% endblock %}
 
@@ -51,10 +52,61 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="footer">
-    <div class="container">
-        <span class="text-muted">Rodapé...</span>
-    </div>
+    
+    <footer style="margin-top: 80px; padding: 50px 20px 20px; background: linear-gradient(180deg, #0d1b2a 0%, #050a10 100%); color: #e0e1dd; border-top: 5px solid #007bff; font-family: sans-serif;">
+        
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; text-align: left;">
+            
+            <div style="flex: 1; min-width: 280px; margin-bottom: 30px; padding-right: 20px;">
+                <a href="{% url 'home' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <span class="navbar-brand fs-4 brand-match">Match <span>Eleitoral</span></span>
+                </a>
+                <p style="font-size: 0.9em; line-height: 1.6; opacity: 0.8;">
+                    Conectando cidadãos aos seus representantes federais através de dados e transparência. Ferramenta desenvolvida para a Turma de Direito – PUC Minas.
+                </p>
+            </div>
+
+            <div style="flex: 1; min-width: 180px; margin-bottom: 30px;">
+                <h4 style="margin-bottom: 15px; font-size: 1em; border-left: 3px solid #007bff; padding-left: 10px;">NAVEGAÇÃO</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.9em; line-height: 2.5;">
+                    <li>
+                        <a href="{% url 'home' %}" style="color: #adb5bd; text-decoration: none; transition: 0.3s;">
+                            <i class="fas fa-house" style="width: 20px;"></i> Início
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" style="color: #adb5bd; text-decoration: none; transition: 0.3s;">
+                            <i class="fas fa-circle-info" style="width: 20px;"></i> Sobre o Projeto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/felipe-martins-dos-santos-053953206" target="_blank" style="color: #adb5bd; text-decoration: none; transition: 0.3s;">
+                            <i class="fab fa-linkedin" style="width: 20px;"></i> LinkedIn
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1; min-width: 220px; margin-bottom: 30px;">
+                <h4 style="margin-bottom: 15px; font-size: 1em; border-left: 3px solid #007bff; padding-left: 10px;">CONTATO</h4>
+                <p style="font-size: 0.9em; color: #adb5bd;">
+                    <i class="fas fa-code"></i> Desenvolvido por:<br>
+                    <strong style="color: #fff; font-size: 1.1em;">Felipe M. Santos</strong><br>
+                    <span style="font-size: 0.85em; opacity: 0.9;">Desenvolvedor de Software | Graduando em Sistemas de Informação</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div style="max-width: 1100px; margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <p style="font-size: 0.8em; opacity: 0.6;">
+                © 2026 Match Eleitoral. Todos os direitos reservados.
+            </p>
+            <div style="font-family: monospace; font-size: 0.75em; background: #007bff; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold; letter-spacing: 0.5px;">
+                v1.1.0-stable
+            </div>
+        </div>
+
     </footer>
 {% endblock %}
 
