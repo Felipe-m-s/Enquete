@@ -26,6 +26,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
 ![PythonAnywhere](https://img.shields.io/badge/PythonAnywhere-1D9FD7?style=flat-square&logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-1D9FD7?style=flat-square&logo=open-source-initiative&logoColor=white)
 
 </div>
 
